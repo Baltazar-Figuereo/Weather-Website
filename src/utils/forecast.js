@@ -18,7 +18,18 @@ const forecast = (latitude, longitude, callback) => {
     }
     */
 
-    const options = {url, proxy, rejectUnauthorized, json};
+    
+    const port = process.env.PORT || 3000;
+
+    var options = {};
+
+    if (port === 3000)
+        var options = {url, proxy, rejectUnauthorized, json};
+    else
+        var options = {url, json};
+    
+
+    // const options = {url, proxy, rejectUnauthorized, json};
 
     request(options, (error, { body }) => {
 

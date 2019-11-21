@@ -9,7 +9,7 @@ const forecast = require("./utils/forecast");
 // console.log(__filename);
 // console.log(path.join(__dirname, "../public"))
 
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -70,7 +70,7 @@ app.get("/weather", (req, res) => {
     }
     else
     {
-        geocode(Address, (GeoError, {Latitude, Longitude, PlaceName}) => {
+        geocode(Address, (GeoError, {Latitude, Longitude, PlaceName} = {}) => {
 
             if(GeoError)
             {
@@ -92,29 +92,6 @@ app.get("/weather", (req, res) => {
             }
         })
     }
-
-
-    //res.send("Show Weather");
-    /*
-    res.send({
-        forecast: "Sunny with a chance of Rain.",
-        location: "New York",
-        name: "Baltazar"
-    })
-    */
-
-    /*
-    const Address = req.query.address;
-
-    if(!Address)
-    {
-        res.send({error: "Must provide an address."})
-    }
-    else
-    {
-        res.send({Address});
-    }
-    */
 })
 
 app.get("/product", (req,res)=> {
@@ -141,6 +118,6 @@ app.get("*", (req,res) => {
     res.render("error", {message: "Page not found", title: "404", name: "Baltazar"})
 })
 
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log("Server is running on port 3000.")
 })

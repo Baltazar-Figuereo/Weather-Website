@@ -20,9 +20,16 @@ const geocode = (address, callback) => {
     }
     */
 
-    const options = {url, proxy, rejectUnauthorized, json};
+    const port = process.env.PORT || 3000;
 
+    var options = {};
 
+    if(port === 3000)
+        options = {url, proxy, rejectUnauthorized, json};
+    else
+        options = {url, json};
+
+    //const options = {url, proxy, rejectUnauthorized, json};
 
     request(options, (error, {body}) => {
         if(error)

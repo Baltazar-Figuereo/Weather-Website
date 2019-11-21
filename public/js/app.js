@@ -27,6 +27,10 @@ WeatherForm.addEventListener("submit", (e) => {
             //console.log(result.ErrorMessage);
             messageOne.textContent = result.ErrorMessage;
         }
+        else if (result.GeoError)
+        {
+            messageOne.textContent = result.GeoError;
+        }
         else
         {
             messageOne.textContent = result.PlaceName;
